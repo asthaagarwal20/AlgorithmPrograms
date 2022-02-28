@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +21,10 @@ namespace AlgorithmPrograms
             }
             Console.WriteLine("enter the word that has to be searched");
             string word=Console.ReadLine();
+            list.Sort();
             int i = 0, j = n - 1;
             bool found=false;
-            while(i<j)
+            while(i<=j)
             {
                 int mid = (i + j) / 2;
                 if (list[mid].CompareTo(word) == 0)
