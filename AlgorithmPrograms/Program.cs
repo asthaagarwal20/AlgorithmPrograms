@@ -10,29 +10,36 @@ namespace AlgorithmPrograms
     {
         static void Main(string[] args)
         {
-            List <int> list = new List<int>();
+            List <string> list = new List<string>();
             int n;
             Console.WriteLine("Enter the size of list");
             n=Convert.ToInt32(Console.ReadLine());
-            for(int i=0;i<n;i++)
+            Console.WriteLine("Enter the words of list");
+            for(int k=0;k<n;k++)
             {
-                list.Add(Convert.ToInt32(Console.ReadLine()));
+                list.Add(Console.ReadLine());
             }
-            for(int i=0;i<n;i++)
+            Console.WriteLine("enter the word that has to be searched");
+            string word=Console.ReadLine();
+            int i = 0, j = n - 1;
+            bool found=false;
+            while(i<j)
             {
-                for(int j=i;j<n;j++)
+                int mid = (i + j) / 2;
+                if (list[mid].CompareTo(word) == 0)
                 {
-                    if (list[i] > list[j])
-                    {
-                        int temp = list[i];
-                        list[i] = list[j];
-                        list[j] = temp;
-                    }
+                    found = true;
+                    break;
                 }
+                else if (list[mid].CompareTo(word) < 0)
+                    i = mid + 1;
+                else
+                    j = mid - 1;
             }
-            Console.WriteLine("Sorted List");
-            for(int i=0;i<n;i++)
-                Console.WriteLine(list[i]); 
+            if (found == true)
+                Console.WriteLine("Element Found");
+            else
+                Console.WriteLine("Element not found");
         }
     }
 }
