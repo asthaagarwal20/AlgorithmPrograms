@@ -10,36 +10,19 @@ namespace AlgorithmPrograms
     {
         static void Main(string[] args)
         {
-            List <string> list = new List<string>();
-            int n;
-            Console.WriteLine("Enter the size of list");
-            n=Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the words of list");
-            for(int k=0;k<n;k++)
-            {
-                list.Add(Console.ReadLine());
-            }
-            Console.WriteLine("enter the word that has to be searched");
-            string word=Console.ReadLine();
-            int i = 0, j = n - 1;
-            bool found=false;
-            while(i<j)
-            {
-                int mid = (i + j) / 2;
-                if (list[mid].CompareTo(word) == 0)
-                {
-                    found = true;
-                    break;
-                }
-                else if (list[mid].CompareTo(word) < 0)
-                    i = mid + 1;
-                else
-                    j = mid - 1;
-            }
-            if (found == true)
-                Console.WriteLine("Element Found");
+            Console.WriteLine("Enter two strings");
+            string word1=Console.ReadLine();
+            string word2=Console.ReadLine();
+            char[] charArray1 = word1.ToLower().ToCharArray();
+            char[] charArray2= word2.ToLower().ToCharArray();
+            Array.Sort(charArray1);
+            Array.Sort(charArray2);
+            word1 = new string(charArray1);
+            word2 = new string(charArray2);
+            if (word1 == word2)
+                Console.WriteLine("Anagram Strings");
             else
-                Console.WriteLine("Element not found");
+                Console.WriteLine("Not Anagram Strings");
         }
     }
 }
